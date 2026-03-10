@@ -1,0 +1,201 @@
+COPY-PASTE READY (POSTMAN)
+Base URL: http://localhost/DIES/api
+
+==================================================
+1) USERS - GET ALL
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/users.php
+Body: (none)
+
+==================================================
+2) USERS - GET ONE
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/users.php?id=6
+Body: (none)
+
+==================================================
+3) USERS - POST (CREATE STUDENT)
+==================================================
+Method: POST
+URL: http://localhost/DIES/api/users.php
+Body (raw JSON):
+{
+  "full_name": "Sample Student",
+  "email": "sample.student@example.com",
+  "password": "12345"
+}
+
+==================================================
+4) USERS - PUT (UPDATE FULL NAME + EMAIL)
+==================================================
+Method: PUT
+URL: http://localhost/DIES/api/users.php
+Body (raw JSON):
+{
+  "id": 6,
+  "full_name": "Sample Student Updated",
+  "email": "sample.student.updated@example.com"
+}
+
+==================================================
+5) USERS - PATCH (ASSIGN/UNASSIGN DEPARTMENT)
+==================================================
+Method: PATCH
+URL: http://localhost/DIES/api/users.php
+Body (raw JSON):
+{
+  "id": 6,
+  "department_id": 1
+}
+
+==================================================
+6) USERS - DELETE
+==================================================
+Method: DELETE
+URL: http://localhost/DIES/api/users.php
+Body (raw JSON):
+{
+  "id": 6
+}
+
+==================================================
+7) DEPARTMENTS - GET ALL
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/departments.php
+Body: (none)
+
+==================================================
+8) DEPARTMENTS - GET ONE
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/departments.php?id=1
+Body: (none)
+
+==================================================
+9) DEPARTMENTS - POST (CREATE)
+==================================================
+Method: POST
+URL: http://localhost/DIES/api/departments.php
+Body (raw JSON):
+{
+  "department_name": "QA Department",
+  "supervisor_name": "Maria Santos"
+}
+
+==================================================
+10) DEPARTMENTS - PUT
+==================================================
+Method: PUT
+URL: http://localhost/DIES/api/departments.php
+Body (raw JSON):
+{
+  "id": 1,
+  "department_name": "IT Department",
+  "supervisor_name": "Adrian Reyes"
+}
+
+==================================================
+11) DEPARTMENTS - PATCH
+==================================================
+Method: PATCH
+URL: http://localhost/DIES/api/departments.php
+Body (raw JSON):
+{
+  "id": 1,
+  "department_name": "IT Ops",
+  "supervisor_name": "Adrian R."
+}
+
+==================================================
+12) DEPARTMENTS - DELETE
+==================================================
+Method: DELETE
+URL: http://localhost/DIES/api/departments.php
+Body (raw JSON):
+{
+  "id": 4
+}
+
+==================================================
+13) ASSIGN - POST
+==================================================
+Method: POST
+URL: http://localhost/DIES/api/assign.php
+Body (raw JSON):
+{
+  "student_id": 6,
+  "department_id": 1
+}
+
+==================================================
+14) TIME LOGS - TIME IN (API)
+==================================================
+Method: POST
+URL: http://localhost/DIES/api/time_logs.php
+Body (raw JSON):
+{
+  "student_id": 6,
+  "action": "in"
+}
+
+==================================================
+15) TIME LOGS - TIME OUT (API)
+==================================================
+Method: POST
+URL: http://localhost/DIES/api/time_logs.php
+Body (raw JSON):
+{
+  "student_id": 6,
+  "action": "out"
+}
+
+==================================================
+16) TIME LOGS - GET LATEST LOG
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/time_logs.php?student_id=6&latest=1
+Body: (none)
+
+==================================================
+17) TIME LOGS - GET ALL LOGS
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/time_logs.php?student_id=6
+Body: (none)
+
+==================================================
+18) TIME LOGS - GET TOTAL LOGGED TIME
+==================================================
+Method: GET
+URL: http://localhost/DIES/api/time_logs.php?student_id=6&summary=1
+Body: (none)
+
+==================================================
+19) TIME LOGS - PUT (CHANGE TIME IN / TIME OUT)
+==================================================
+Method: PUT
+URL: http://localhost/DIES/api/time_logs.php
+Body (raw JSON):
+{
+  "student_id": 6,
+  "log_date": "2026-03-06",
+  "time_in": "2026-03-06 08:00:00",
+  "time_out": "2026-03-06 17:00:00"
+}
+
+Note:
+- You can send only "time_in" or only "time_out" if needed.
+- "log_date" is optional; default is today's PH date.
+- Accepts full datetime or time-only (example: "8:00 AM", "4:58 PM").
+
+==================================================
+POSTMAN SETTINGS (IMPORTANT)
+==================================================
+Headers:
+Content-Type: application/json
+
+Body tab:
+raw -> JSON
